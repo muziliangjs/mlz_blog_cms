@@ -7,6 +7,8 @@ import Default from '../layouts/Default.vue'
 
 // cpmpontent
 import Dashoard from '../views/Dashboard.vue'
+import Article from '../views/Article.vue'
+import Label from '../views/Label.vue'
 
 const routes = [{
   path: "/",
@@ -14,6 +16,12 @@ const routes = [{
   children: [{
     path: "/",
     component: Dashoard,
+  }, {
+    path: "/article",
+    component: Article,
+  }, {
+    path: "/label",
+    component: Label,
   }]
 }]
 
