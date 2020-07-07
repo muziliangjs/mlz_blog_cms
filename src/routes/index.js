@@ -9,6 +9,7 @@ import Default from '../layouts/Default.vue'
 import Dashoard from '../views/Dashboard.vue'
 import Article from '../views/Article.vue'
 import Label from '../views/Label.vue'
+import Login from '../views/Login.vue'
 
 const routes = [{
   path: "/",
@@ -23,7 +24,10 @@ const routes = [{
     path: "/label",
     component: Label,
   }]
-}]
+}, {
+  path: "/login",
+  component: Login,
+}, ]
 
 var router = new VueRouter({
   mode: 'history',
