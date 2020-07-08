@@ -31,11 +31,13 @@ export default {
         this.$message.warning("请输入标签");
         return;
       }
-      service.post("/api/label", { label: this.label }).then(res => {
+      service.post("/api/label/create", { label: this.label }).then(res => {
         console.log(res);
-        if (res.data.code == 200) {
-          this.$message.success("创建成功");
+        if (res.code == 200) {
+          this.$message.success(`创建 ${this.label} 标签成功`);
           this.dialogVisible = false;
+        } else {
+          this.$message.error(res.msg);
         }
       });
     }

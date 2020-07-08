@@ -1,4 +1,8 @@
 import axios from 'axios'
+import { getToken } from "@/utils/auth";
+import {
+  Message
+} from 'element-ui'
 
 const service = axios.create({
   // baseURL: process.env.VUE_APP_BASE_API, 
@@ -7,27 +11,31 @@ const service = axios.create({
 })
 
 // 请求拦截器
-axios.interceptors.request.use(
-  config =>{
-    console.log('请求拦截器')
-    console.log(config)
+service.interceptors.request.use(
+  config => {
+    config.headers['authorization'] = getToken()
     return config
   },
   error => {
-    alert(error)
     return Promise.reject(error)
   }
 )
 
 // 相应拦截器
-axios.interceptors.response.use(
-  res =>{
-    console.log('相应拦截器')
-    console.log(res)
-    return res
+service.interceptors.response.use(
+  res => {
+    if (res.status == 200) {
+      return Promise.resolve(res.data);
+    } else {
+      Message({
+        message: '请求失败',
+        type: 'error',
+        duration: 2000
+      })
+      return Promise.reject(res.data)
+    }
   },
   error => {
-    alert(error)
     return Promise.reject(error)
   }
 )
