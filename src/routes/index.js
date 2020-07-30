@@ -11,6 +11,7 @@ import Default from '../layouts/Default.vue'
 // cpmpontent
 import Dashoard from '../views/Dashboard.vue'
 import Article from '../views/Article.vue'
+import ArticleCreate from '../views/CreateArticle.vue'
 import Label from '../views/Label.vue'
 import Login from '../views/Login.vue'
 
@@ -23,6 +24,10 @@ const routes = [{
   }, {
     path: "/article",
     component: Article,
+  },{
+    path: "/articleCreate",
+    name:'CreateArticle',
+    component: ArticleCreate,
   }, {
     path: "/label",
     component: Label,

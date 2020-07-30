@@ -2,6 +2,7 @@
   <div class="login">
     <div class="login-content">
       <div class="login-title">木子亮</div>
+
       <el-form :rules="rules" label-width="0" :model="ruleForm" ref="ruleForm">
         <el-form-item prop="username">
           <el-input type="text" placeholder="账号" v-model="ruleForm.username"></el-input>
@@ -51,8 +52,7 @@ export default {
     },
     handleLogin() {
       this.submitLoading = true;
-      service.post("/api/user/login", { ...this.ruleForm }).then(res => {
-        console.log(res);
+      service.post("/api/user/login", { ...this.ruleForm }).then(res => { 
         this.submitLoading = false;
         if (res.code == 200) {
           setToken(res.data.token);
